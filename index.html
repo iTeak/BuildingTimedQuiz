@@ -10,9 +10,9 @@
 <body>
 
     <div class="pagewrap">
-        <div class="titel">
+        <div>
             <div id= "timer" class="timer">0:00</div>
-            <h1>
+            <h1 id="title">
                 Quiz
             </h1>
         </div>
@@ -25,10 +25,15 @@
              <p class="choiice4"><input type="radio" name="question1" value="Answer4">A</p>
             </div>
                 <div>
-                    <button class="startButton" id="startButton">Start</button>
-                    <button>Skip this Quiz</button>
+                    <button class="start" id="startButton">Start</button>
+                    <button class ="hide">Skip this Quiz</button>
+                    <button class="hide" id="NextButton">Next</button>
                 </div>
         </div>
+    </div>
+
+    <div class="hide">
+        
     </div>
     <script src="./script.js" ></script>
 </body>

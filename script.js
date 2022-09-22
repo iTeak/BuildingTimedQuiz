@@ -1,8 +1,6 @@
 var startButton = document.getElementById('startButton')
-
 var formWrap = document.getElementById('question')
-
-var Nextbutton = document.getElementById('question')
+var NextButton = document.getElementById('NextButton')
 
 var choice1 = document.getElementsByClassName ('choice1')
 var choice2 = document.getElementsByClassName ('choice2')
@@ -17,11 +15,12 @@ var choice4 = document.getElementsByClassName ('choice4')
 // 
 
 
-startButton.addEventListener ('click' , startGame)
-Nextbutton.addEventListener ('click' , populatequestion)
+startButton.addEventListener('click' , startGame)
+NextButton.addEventListener('click' , populatequestion)
+ 
 
-var question = [{ 
-    question: "What does HTML standy for?",
+const questions = [{ 
+    question1: "What does HTML standy for?",
     answers: [
         {text: 'Hyper Text Mark up Language', correct: true},
         {text:'Java Script', correct: false},
@@ -50,13 +49,17 @@ var question = [{
 
 
 function startGame() 
-{ document.getElementById("title").innerHTML("")
+{ document.getElementById("title").innerHTML=""
+startButton.classList.add('hide');
+NextButton.classList.remove('hide')
 
+  
 }
 
 function populatequestion(){
-document.getElementById('question').innerHTML(question[0])
-
+    console.log("working")
+document.getElementById('question').innerHTML= (questions[0].question1)
+document.getElementsByClassName('choice1').innerHTML=(questions[0].answers[0])
 
 
 
