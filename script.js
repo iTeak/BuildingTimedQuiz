@@ -41,8 +41,8 @@ var question = [{
 { 
     question: "What does JS stand for",
     answers: [
-        {text: 'Hyper Text Mark up Language', correct: true},
-        {text:'Java Script', correct: false},
+        {text: 'Hyper Text Mark up Language', correct: false},
+        {text:'Java Script', correct: true},
         {text: "You don't know,just give up", correct: false},
         {text: "Style sheets", correct: false},
     ] 
@@ -50,13 +50,17 @@ var question = [{
 
 
 function startGame() 
-{ 
+{ document.getElementById("title").innerHTML("")
 
 }
 
 function populatequestion(){
-document.getElementById("title").innerHTML("")
 document.getElementById('question').innerHTML(question[0])
+
+
+
+
+
 //title will disappear 
 //question in <h2> will populate to an actual question 
 // choices will change in choice1, choice 2, choice 3, choice 4 
