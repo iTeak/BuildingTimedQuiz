@@ -1,14 +1,17 @@
 var startButton = document.getElementById('startButton')
 var NextButton = document.getElementById('NextButton')
-var choice1 = document.getElementsByClassName ('choice1')
-var choice2 = document.getElementsByClassName ('choice2')
-var choice3 = document.getElementsByClassName ('choice3')
-var choice4 = document.getElementsByClassName ('choice4')
+// var choice1 = document.getElementsByClassName ('choice1')
+// var choice2 = document.getElementsByClassName ('choice2')
+// var choice3 = document.getElementsByClassName ('choice3')
+// var choice4 = document.getElementsByClassName ('choice4')
+var choicesEl = document.getElementById('choices')
+var questionEl = document.getElementById('questions')
 var showQuestion = document.getElementById('question')
 var showChoices = document.getElementById('choices')
 var sikeButton = document.getElementById('sike')
 let shuffledQuestions, currentQuestionIndex
-// var timer = document.getElementById('timer')
+
+var timer;
 
 
 //Event listner during the end 
@@ -18,36 +21,41 @@ let shuffledQuestions, currentQuestionIndex
 
 startButton.addEventListener('click' , startGame)
 NextButton.addEventListener('click' , populatequestion)
-sikeButton.addEventListener('click', motivation )
- 
+sikeButton.addEventListener('click', youthought )
 
-var questions = [{ 
+
+var questions = [
+    {
     question: "What does HTML standy for?",
     answers: [
-        {text: 'Hyper Text Mark up Language', correct: true},
-        {text:'Java Script', correct: false},
-        {text: "You don't know,just give up", correct: false},
-        {text: "Style sheets", correct: false},
-    ] 
+        {text: 'Hyper Text Mark up Language'},
+        {text:'Java Script'},
+        {text: "You don't know,just give up"},
+        {text: "Style sheets"},
+    ],
+    answer: {text: 'Hyper Text Mark up Language'},
 },
 { 
     question: "What does CSS Stand for?",
     answers: [
-        {text: 'Hyper Text Mark up Language', correct: true},
-        {text:'Java Script', correct: false},
-        {text: "You don't know,just give up", correct: false},
-        {text: "Style sheets", correct: false},
-    ] 
+        {text: 'Hyper Text Mark up Language'},
+        {text:'Java Script'},
+        {text: "You don't know,just give up"},
+        {text: "Style sheets"},
+    ],
+    answer: {text: 'Style sheets'},
 },
 { 
     question: "What does JS stand for",
     answers: [
-        {text: 'Hyper Text Mark up Language', correct: false},
-        {text:'Java Script', correct: true},
-        {text: "You don't know,just give up", correct: false},
-        {text: "Style sheets", correct: false},
-    ] 
-}]
+        {text: 'Hyper Text Mark up Language'},
+        {text:'Java Script'},
+        {text: "You don't know,just give up"},
+        {text: "Style sheets"},
+    ],
+    answer: {text: 'Java Script'},
+},
+];
 
 
 function startGame() 
@@ -62,7 +70,7 @@ document.getElementById('choice1').innerHTML=(questions[0].answers[0].text);
 document.getElementById('choice2').innerHTML=(questions[0].answers[1].text);
 document.getElementById('choice3').innerHTML=(questions[0].answers[2].text);
 document.getElementById('choice4').innerHTML=(questions[0].answers[3].text);
-console.log(questions[0].answers[1])
+
 }
 
 function populatequestion(){
@@ -71,7 +79,7 @@ function populatequestion(){
     document.getElementById('question').innerHTML= (questions[0].question);
     document.getElementById('question').innerHTML= (questions[1].question);
     document.getElementById('question').innerHTML= (questions[2].question);
-    console.log("working")
+
 
 
 
@@ -85,20 +93,67 @@ function populatequestion(){
 
 
 
+// function clickQuestion(e) {
+//     var buttonElement = e.target
 
+//     // check if user is right or wrong
+//     if (buttonElement.value !== questions[currentQuestionIndex].answer) {
+//         timer -= 10;
 
+//         if (timer < 0) {
+//             timer = 0
+//         }
+//             // displays score
+//         timerEl.textContent = timer
 
+        
+//     }
 
-function selectAnswer(){
+// }
 
+function selectAnswer(e){
+  var selectedButton = e.target
+  if (buttonElement.value !== questions[currentQuestionIndex].answer) {
+    timer -= 10;
+
+    if (timer < 0) {
+        timer = 0
+    }
+        // displays scored
+    timerEl.textContent = timer
+
+    
+}
+   
+    
+    // var answerselected = document.querySelectorAll('input')
+    // for(var i= 0; i< answerselected.length; i++) {
+    //     if(answerselected[i].checked == true &&
+    //     answerselected[i].value === questions[3].correctanswer){}
+    // }
+    //write a variable for keeping score, 
+    //for each correct answer 
+    //grab value form the selected button 
+    //check thus value 
+    //know the question
 }
 // function timer( ){
 // }
 
-function setNextQuestion(){
+function score (){
+    //answer is correct add 1 
 
 }
 
-function motivation(){
-    alert("You thought")
+function youthought(){
+    alert("...")
 }
+
+// startQuiz
+    // hide home page 
+    // timer = setInterval(clock,  1000)
+    // display time on page. timerEl.textContent = timer
+    // getQuestion()
+
+// getQuestion
+    // current question variable is assigned by the questions array
