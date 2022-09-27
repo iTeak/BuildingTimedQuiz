@@ -9,11 +9,8 @@ var questionEl = document.getElementById('questions')
 var showQuestion = document.getElementById('question')
 var showChoices = document.getElementById('choices')
 var sikeButton = document.getElementById('sike')
-let shuffledQuestions, currentQuestionIndex
-
-var timer;
-
-
+let shuffledQuestions, currentQuestionsIndex
+currentQuestionsIndex=0
 //Event listner during the end 
 // Funtion declartion 
 // 
@@ -22,28 +19,28 @@ var timer;
 startButton.addEventListener('click' , startGame)
 NextButton.addEventListener('click' , populatequestion)
 sikeButton.addEventListener('click', youthought )
-
+choicesEl.addEventListener('click', selectAnswer)
 
 var questions = [
     {
     question: "What does HTML standy for?",
     answers: [
-        {text: 'Hyper Text Mark up Language'},
+        {text:'Hyper Text Mark up Language'},
         {text:'Java Script'},
         {text: "You don't know,just give up"},
         {text: "Style sheets"},
     ],
-    answer: {text: 'Hyper Text Mark up Language'},
+    answer:'Hyper Text Mark up Language',
 },
 { 
     question: "What does CSS Stand for?",
     answers: [
         {text: 'Hyper Text Mark up Language'},
-        {text:'Java Script'},
+        {text: 'Java Script'},
         {text: "You don't know,just give up"},
-        {text: "Style sheets"},
+        {text: 'Style sheets'},
     ],
-    answer: {text: 'Style sheets'},
+    answer:'Style sheets',
 },
 { 
     question: "What does JS stand for",
@@ -53,12 +50,12 @@ var questions = [
         {text: "You don't know,just give up"},
         {text: "Style sheets"},
     ],
-    answer: {text: 'Java Script'},
+    answer:'Java Script',
 },
 ];
 
 
-function startGame() 
+function startGame(click) 
 {document.getElementById("title").innerHTML=""
 startButton.classList.add('hide');
 NextButton.classList.remove('hide')
@@ -73,13 +70,16 @@ document.getElementById('choice4').innerHTML=(questions[0].answers[3].text);
 
 }
 
+
 function populatequestion(){
     shuffledQuestions = questions.sort(()=> Math.random() - .5)
-    currentQuestionIndex=0
+    currentQuestionsIndex=0
     document.getElementById('question').innerHTML= (questions[0].question);
     document.getElementById('question').innerHTML= (questions[1].question);
     document.getElementById('question').innerHTML= (questions[2].question);
+   
 
+   
 
 
 
@@ -112,17 +112,19 @@ function populatequestion(){
 // }
 
 function selectAnswer(e){
-  var selectedButton = e.target
-  if (buttonElement.value !== questions[currentQuestionIndex].answer) {
-    timer -= 10;
+  choicesEl = e.target
+  console.log(choicesEl.innerHTM)
+  console.log(currentQuestionsIndex)
+  if (choicesEl == questions[currentQuestionsIndex].answer) 
+    console.log("correct");
 
     if (timer < 0) {
-        timer = 0
-    }
+        const newLocal = timer = 0
+    
         // displays scored
     timerEl.textContent = timer
 
-    
+  
 }
    
     
