@@ -57,6 +57,8 @@ var questions = [
 
 function startGame(click) 
 {document.getElementById("title").innerHTML=""
+shuffledQuestions = questions.sort(()=> Math.random() - .5)
+currentQuestionsIndex=0
 startButton.classList.add('hide');
 NextButton.classList.remove('hide')
 showChoices.classList.remove('hide')
@@ -67,16 +69,29 @@ document.getElementById('choice1').innerHTML=(questions[0].answers[0].text);
 document.getElementById('choice2').innerHTML=(questions[0].answers[1].text);
 document.getElementById('choice3').innerHTML=(questions[0].answers[2].text);
 document.getElementById('choice4').innerHTML=(questions[0].answers[3].text);
-
+setQuestion()
 }
 
+function setQuestion(){
+    populatequestion(shuffledQuestions[currentQuestionsIndex])
+}
+function populatequestion(question){
+    questionEl.innerHTML = questions.question
+    question.answers.forEach(answer => {
+        const button = document.createElement('button')
+        button.innerHTML = answer.text
+        button.classList.add('button')
+        if(answer.correct){
+            button.dataset.correct = answert.correct
+        }
+        button.addEventListener('click', selectAnswer)
+    })
+    var currentQuestion = questions[currentQuestionsIndex];
+  
+    // document.getElementById('question').innerHTML= (questions[0].question);
+    // document.getElementById('question').innerHTML= (questions[1].question);
+    // document.getElementById('question').innerHTML= (questions[2].question);
 
-function populatequestion(){
-    shuffledQuestions = questions.sort(()=> Math.random() - .5)
-    currentQuestionsIndex=0
-    document.getElementById('question').innerHTML= (questions[0].question);
-    document.getElementById('question').innerHTML= (questions[1].question);
-    document.getElementById('question').innerHTML= (questions[2].question);
    
 
    
@@ -113,9 +128,9 @@ function populatequestion(){
 
 function selectAnswer(e){
   choicesEl = e.target
-  console.log(choicesEl.innerHTM)
+  console.log(choicesEl.innerHTML)
   console.log(currentQuestionsIndex)
-  if (choicesEl == questions[currentQuestionsIndex].answer) 
+  if (choicesEl.innerHTML == questions[currentQuestionsIndex].answer) 
     console.log("correct");
 
     if (timer < 0) {
