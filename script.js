@@ -127,9 +127,12 @@ function populatequestion(question){
 // }
 
 function selectAnswer(e){
-  choicesEl = e.target
-  console.log(choicesEl.innerHTML)
-  console.log(currentQuestionsIndex)
+var selectedButton = e.target
+var correct = selectedButton.dataset.correct
+setstatusClass(document.body, correct)
+Array.from(answerButtonsElement.children).forEach(button => {setstatusClass(button, button.dataset.correct
+    )})
+  
   if (choicesEl.innerHTML == questions[currentQuestionsIndex].answer) 
     console.log("correct");
 
