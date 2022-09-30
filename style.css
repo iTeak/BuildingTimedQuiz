@@ -1,4 +1,12 @@
-.pagewrap {
+ :root {
+   --primarycolor: rgb(215, 201, 0);
+   --secondarycolor: rgb(34, 30, 162);
+
+  }
+  .timer{
+    font-weight: bolder;
+  }
+  .pagewrap {
     font-size: 1.5rem;
     border-color: blue;
     background-color: gold;
@@ -6,17 +14,27 @@
     border-width: 10px;
     border-radius: 2rem;
     padding: 50px;
-    box-shadow: 2px 7px rgb(169, 99, 99)  
-}
-body{
+    box-shadow: 2px 7px rgb(169, 99, 99)
+     
+  }
+  
+  body {
+    
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     background-color: black;
     position: relative;
-}
-button {
+  }
+   
+  .btn-grid {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 10px;
+    margin: 20px 0;
+  }
+  button{
     font-size: 40px;
     background-color: blue;
     color: white;
@@ -28,23 +46,37 @@ button {
     padding-top: 16px;
     padding-bottom: 16px;
     border-radius: 4rem;
-    box-shadow: 2px 2px rgb(16, 16, 16) ;
-}
-
-.timer{
-    position: absolute;
-    color: beige;
-    margin-left: 850px;
-    margin-top: -90px;
-    font-size: 50px;
-}
-.controls {
-margin-top: 100px;
-}
-
-.hide {
-  display: none;
-}
-.correct{
+    box-shadow: 2px 2px rgb(16, 16, 16)
+  }
+  .btn {
+    font-size: 40px;
+    background-color: blue;
+    color: white;
+    margin-left:20px;
+    margin-right:20px;
+    margin-top: 2px;
+    padding-left: 5rem;
+    padding-right: 5rem;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    border-radius: 2rem;
+    box-shadow: 2px 2px rgb(16, 16, 16)
+  }
+  
+  button:hover {
+    border-color: gold;
+    border-radius: 100px;
+    
+  }
+  
+ 
+  
+  .controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .hide {
     display: none;
-}
+  }

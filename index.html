@@ -1,44 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz time</title>
-    <link rel="stylesheet" href="./style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="./style.css" rel="stylesheet">
+  <script defer src="./script.js"></script>
+  <title>Quiz App</title>
 </head>
 <body>
-
-    <div class="pagewrap">
-        <div>
-            <div id= "timer" class="timer">0:00</div>
-            <h1 id="title">
-                You will Fail
-            </h1>
-        </div>
-        <div class="formwrap">
-            <div id="question-cont" class="hide"> 
-            <h2  id="question">
-                question
-            </h2> 
-        </div>
-            <div  id="choices" class="hide">
-          <button id="choice"></button>
-          <button id="choice"></button>
-          <button id="choice"></button>
-          <button id="choice"></button>
-            </div>
-                <div class="controls">
-                    <button class="start" id="startButton">Start</button>
-                    <button id="sike">Skip this Quiz</button>
-                    <button class="hide" id="NextButton">Next</button>
-                </div>
-        </div>
+  <div class="pagewrap">
+        <div class="timer" id="timer"> 0:00 </div>
+    <div id="question-container" class="hide">
+      <div id="question"></div>
+      <div id="answer-buttons" class="btn-grid">
+        <button class="btn">Answer 1</button>
+        <button class="btn">Answer 2</button>
+        <button class="btn">Answer 3</button>
+        <button class="btn">Answer 4</button>
+      </div>
     </div>
-
-    <div class="hide">
-        
+    <div class="controls">
+        <h1 id="ready">Ready to Fail?</h1>
+      <button id="start-btn" class="start-btn btn">Start</button>
+      <button id="next-btn" class="next-btn btn hide">Next</button>
+      <button id="sike">Skip This Quiz</button>
     </div>
-    <script src="./script.js" ></script>
+  </div>
 </body>
 </html>
