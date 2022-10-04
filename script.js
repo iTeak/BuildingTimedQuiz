@@ -10,6 +10,7 @@ var shuffledQuestions, currentQuestionIndex
 var startingTime = 10
 var time = startingTime * 60
 var timerEl = document.getElementById('timer');
+var seconds = (time % 60)
 skipThisQuizButton.addEventListener('click',faliure)
 startButton.addEventListener('click', startGame,)
 nextButton.addEventListener('click', () => {
@@ -35,6 +36,10 @@ function countdown() {
  seconds = seconds < 10 ? '0'+ seconds : seconds;
  timerEl.innerHTML = `${minutes}:${seconds}`
  time--
+ if(seconds < 0) {
+  clearInterval(timer);
+  alert("Time is up!")
+}
 }
 }
 
@@ -85,9 +90,16 @@ function setStatusClass(element, correct) {
   if (correct) {
     element.classList.add('correct')
   } else {
-    element.classList.add('wrong')
+    element.classList.add('wrong') 
   }
 }
+function wrong(element, incorrect){
+subtractTime()
+}
+function subtractTime(){
+  var selectedButton = e.target
+if(answers.correct==false){seconds -= 5;}
+    ;}
 
 function clearStatusClass(element) {
   element.classList.remove('correct')
@@ -98,10 +110,10 @@ var questions = [
   {
     question: '3What does JS stand for?',
     answers: [
-      { text: 'Java Script', correct: true },
+      { text: 'Java Script', correct: false},
       { text: 'Java Scripts', correct: false },
       { text: 'Java-Script', correct: true },
-      { text: 'I give up', correct: true }
+      { text: 'I give up', correct: false}
     ]
   },
   {
@@ -116,7 +128,7 @@ var questions = [
   {
     question: '1Who are you?',
     answers: [
-        { text: "Vengance ", correct: false },
+        { text: "Vengance ", correct: true },
         { text: "My name is Maximus..", correct: false },
         { text: "I don't know ", correct: false },
         { text: "I don't know ", correct: false },
@@ -135,7 +147,7 @@ var questions = [
 
 
 function faliure(){
-skipThisQuizButton.innerHTML = "Wow..."
+skipThisQuizButton.innerHTML = "Mama raised a ...."
 startButton.classList.add('hide')
 questionContainerElement.innerHTML = 'Faliure'
 questionContainerElement.classList.remove('hide')
