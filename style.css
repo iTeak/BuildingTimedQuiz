@@ -68,9 +68,6 @@
     border-radius: 100px;
     
   }
-  
- 
-  
   .controls {
     display: flex;
     justify-content: center;
@@ -80,3 +77,4 @@
   .hide {
     display: none;
   }
+
