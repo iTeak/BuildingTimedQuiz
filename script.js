@@ -7,7 +7,7 @@ var skipThisQuizButton = document.getElementById('sike')
 var fail = document.getElementById('ready')
 var timer = document.getElementById('timer')
 var shuffledQuestions, currentQuestionIndex
-var startingTime = 10
+var startingTime = .15
 var time = startingTime * 60
 var timerEl = document.getElementById('timer');
 var seconds = (time % 60)
@@ -36,10 +36,13 @@ function countdown() {
  seconds = seconds < 10 ? '0'+ seconds : seconds;
  timerEl.innerHTML = `${minutes}:${seconds}`
  time--
- if(seconds < 0) {
+ if(time < 0) {
   clearInterval(timer);
+  stoptimer()
   alert("Time is up!")
+  timerEl.innerHTML('You failed because yo Mama')
 }
+
 }
 }
 
@@ -108,7 +111,7 @@ function clearStatusClass(element) {
 
 var questions = [
   {
-    question: '3What does JS stand for?',
+    question: 'What does JS stand for?',
     answers: [
       { text: 'Java Script', correct: false},
       { text: 'Java Scripts', correct: false },
@@ -117,7 +120,7 @@ var questions = [
     ]
   },
   {
-    question: '2who do you think you are?',
+    question: 'who do you think you are?',
     answers: [
       { text: "I don't know ", correct: true },
       { text: "I don't know ", correct: false },
@@ -126,7 +129,7 @@ var questions = [
     ]
   },
   {
-    question: '1Who are you?',
+    question: 'Who are you?',
     answers: [
         { text: "Vengance ", correct: true },
         { text: "My name is Maximus..", correct: false },
@@ -135,19 +138,21 @@ var questions = [
     ]
   },
   {
-    question: '4What does CSS stand for?',
+    question: 'What does CSS stand for?',
     answers: [
-        { text: "I don't know ", correct: true },
+        { text: "Cascading Style Sheet ", correct: true },
+        { text: "Cascade Detergent", correct: false },
         { text: "I don't know ", correct: false },
-        { text: "I don't know ", correct: false },
-        { text: "I don't know ", correct: false },
+        { text: "Cascading sheets of style ", correct: false },
     ]
   }
 ]
 
-
-function faliure(){
-skipThisQuizButton.innerHTML = "Mama raised a ...."
+function stoptimer (){
+  
+}
+function faliure(timer){
+skipThisQuizButton.innerHTML = "Mama raised a ....faliure..."
 startButton.classList.add('hide')
 questionContainerElement.innerHTML = 'Faliure'
 questionContainerElement.classList.remove('hide')
