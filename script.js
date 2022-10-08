@@ -7,7 +7,7 @@ var skipThisQuizButton = document.getElementById('sike')
 var fail = document.getElementById('ready')
 var timer = document.getElementById('timer')
 var shuffledQuestions, currentQuestionIndex
-var startingTime = .15
+var startingTime = 10
 var time = startingTime * 60
 var timerEl = document.getElementById('timer');
 var seconds = (time % 60)
@@ -31,19 +31,20 @@ function startGame() {
   setNextQuestion()
   var timerInter = setInterval(countdown, 1000)
   function countdown() {
-  var minutes = Math.floor(time/60)
-  var seconds = (time % 60)
- seconds = seconds < 10 ? '0'+ seconds : seconds;
- timerEl.innerHTML = `${minutes}:${seconds}`
- time--
- if(time < 0) {
-  clearInterval(timerInter);
-  stoptimer()
-  alert("Time is up!")
-  timerEl.innerHTML('You failed because yo Mama')
-}
-
-}
+    var minutes = Math.floor(time/60)
+    var seconds = (time % 60)
+   seconds = seconds < 10 ? '0'+ seconds : seconds;
+   timerEl.innerHTML = `${minutes}:${seconds}`
+   //timerEl.innerHTML = `${time}`
+   time--
+   if(time < 0) {
+    clearInterval(timerInter);
+    stoptimer()
+    alert("Time is up!")
+    timerEl.innerHTML('You failed because yo Mama')
+  }
+  
+  }
 }
 
 function setNextQuestion() {
@@ -58,8 +59,8 @@ function showQuestion(question) {
     button.innerText = answer.text
     button.classList.add('btn')
     if (answer.correct) {
-      button.dataset.correct = answer.correct
-    }
+      button.dataset.correct = true
+    }else{button.dataset.correct= false}
     button.addEventListener('click', selectAnswer)
     answerButtonsElement.appendChild(button)
   })
@@ -75,7 +76,17 @@ function resetState() {
 
 function selectAnswer(e) {
   var selectedButton = e.target
+  console.log(e.target)
   var correct = selectedButton.dataset.correct
+  console.log(correct)
+  if(correct === "false"){
+    console.log("working...")
+    time = time - 10
+    // var minutes = Math.floor(time/60)
+    // var seconds = (time % 60)
+    // seconds = seconds < 10 ? '0'+ seconds : seconds;
+    // timerEl.innerHTML = `${minutes}:${seconds}`
+ }
   setStatusClass(document.body, correct)
   Array.from(answerButtonsElement.children).forEach(button => {
     setStatusClass(button, button.dataset.correct)
@@ -151,7 +162,9 @@ startButton.classList.add('hide')
 questionContainerElement.innerHTML = 'Faliure'
 questionContainerElement.classList.remove('hide')
 fail.classList.add('hide')
+timerEl.classList.add('hide')
 }
 
 function subtractTime(element){
 if(element.classList = ("wrong")){seconds-5} ;}
+
