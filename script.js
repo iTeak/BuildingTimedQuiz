@@ -11,13 +11,13 @@ var startingTime = .15
 var time = startingTime * 60
 var timerEl = document.getElementById('timer');
 var seconds = (time % 60)
+answerButtonsElement.addEventListener("click",subtractTime)
 skipThisQuizButton.addEventListener('click',faliure)
 startButton.addEventListener('click', startGame,)
 nextButton.addEventListener('click', () => {
   currentQuestionIndex++
   setNextQuestion()
 })
-
 
 // if {answers.correct== false)then.{startcount -  }
 function startGame() { 
@@ -29,15 +29,15 @@ function startGame() {
   currentQuestionIndex = 0
   questionContainerElement.classList.remove('hide')
   setNextQuestion()
-  setInterval(countdown, 1000)
-function countdown() {
+  var timerInter = setInterval(countdown, 1000)
+  function countdown() {
   var minutes = Math.floor(time/60)
   var seconds = (time % 60)
  seconds = seconds < 10 ? '0'+ seconds : seconds;
  timerEl.innerHTML = `${minutes}:${seconds}`
  time--
  if(time < 0) {
-  clearInterval(timer);
+  clearInterval(timerInter);
   stoptimer()
   alert("Time is up!")
   timerEl.innerHTML('You failed because yo Mama')
@@ -92,17 +92,15 @@ function setStatusClass(element, correct) {
   clearStatusClass(element)
   if (correct) {
     element.classList.add('correct')
-  } else {
+  } 
+   else {
     element.classList.add('wrong') 
   }
 }
-function wrong(element, incorrect){
-subtractTime()
-}
-function subtractTime(){
-  var selectedButton = e.target
-if(answers.correct==false){seconds -= 5;}
-    ;}
+// function wrong(element, incorrect){
+// subtractTime()
+// }
+
 
 function clearStatusClass(element) {
   element.classList.remove('correct')
@@ -120,12 +118,12 @@ var questions = [
     ]
   },
   {
-    question: 'who do you think you are?',
+    question: 'what does Java Script do?',
     answers: [
-      { text: "I don't know ", correct: true },
-      { text: "I don't know ", correct: false },
-      { text: "I don't know ", correct: false },
-      { text: "I don't know ", correct: false },
+      { text: "Makes the website interactive", correct: true },
+      { text: "Skeleton of webpage ", correct: false },
+      { text: "A french way of making coffee", correct: false },
+      { text: "Java Script ", correct: false },
     ]
   },
   {
@@ -147,10 +145,6 @@ var questions = [
     ]
   }
 ]
-
-function stoptimer (){
-  
-}
 function faliure(timer){
 skipThisQuizButton.innerHTML = "Mama raised a ....faliure..."
 startButton.classList.add('hide')
@@ -158,3 +152,6 @@ questionContainerElement.innerHTML = 'Faliure'
 questionContainerElement.classList.remove('hide')
 fail.classList.add('hide')
 }
+
+function subtractTime(element){
+if(element.classList = ("wrong")){seconds-5} ;}
