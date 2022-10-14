@@ -11,6 +11,8 @@ var startingTime = 10
 var time = startingTime * 60
 var timerEl = document.getElementById('timer');
 var seconds = (time % 60)
+var saveButton = document.getElementById('save-btn')
+var endgame = document.getElementById('endgame')
 answerButtonsElement.addEventListener("click",subtractTime)
 skipThisQuizButton.addEventListener('click',faliure)
 startButton.addEventListener('click', startGame,)
@@ -39,7 +41,6 @@ function startGame() {
    time--
    if(time < 0) {
     clearInterval(timerInter);
-    stoptimer()
     alert("Time is up!")
     timerEl.innerHTML('You failed because yo Mama')
   }
@@ -76,26 +77,27 @@ function resetState() {
 
 function selectAnswer(e) {
   var selectedButton = e.target
+  var point = 10
   console.log(e.target)
   var correct = selectedButton.dataset.correct
   console.log(correct)
   if(correct === "false"){
-    console.log("working...")
-    time = time - 10
-    // var minutes = Math.floor(time/60)
-    // var seconds = (time % 60)
-    // seconds = seconds < 10 ? '0'+ seconds : seconds;
-    // timerEl.innerHTML = `${minutes}:${seconds}`
- }
+    time = time - 100;
   setStatusClass(document.body, correct)
   Array.from(answerButtonsElement.children).forEach(button => {
     setStatusClass(button, button.dataset.correct)
-  })
+  })}
+  if (correct = true){points()
+  console.log(point)
+  }
   if (shuffledQuestions.length > currentQuestionIndex + 1) {
     nextButton.classList.remove('hide')
   } else {
     startButton.innerText = 'Restart'
     startButton.classList.remove('hide')
+    saveButton.classList.remove('hide')
+    questionContainerElement.classList.add('hide')
+    endgame.classList.remove('hide')
   }
 }
 
@@ -157,7 +159,7 @@ var questions = [
   }
 ]
 function faliure(timer){
-skipThisQuizButton.innerHTML = "Mama raised a ....faliure..."
+skipThisQuizButton.innerHTML = "Mama raised a little..."
 startButton.classList.add('hide')
 questionContainerElement.innerHTML = 'Faliure'
 questionContainerElement.classList.remove('hide')
@@ -168,3 +170,6 @@ timerEl.classList.add('hide')
 function subtractTime(element){
 if(element.classList = ("wrong")){seconds-5} ;}
 
+function points(){
+  
+}
