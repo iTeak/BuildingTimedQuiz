@@ -13,6 +13,7 @@ var timerEl = document.getElementById('timer');
 var seconds = (time % 60)
 var saveButton = document.getElementById('save-btn')
 var endgame = document.getElementById('endgame')
+
 answerButtonsElement.addEventListener("click",subtractTime)
 skipThisQuizButton.addEventListener('click',faliure)
 startButton.addEventListener('click', startGame,)
@@ -20,7 +21,6 @@ nextButton.addEventListener('click', () => {
   currentQuestionIndex++
   setNextQuestion()
 })
-
 // if {answers.correct== false)then.{startcount -  }
 function startGame() { 
   countdown()
@@ -98,6 +98,7 @@ function selectAnswer(e) {
     saveButton.classList.remove('hide')
     questionContainerElement.classList.add('hide')
     endgame.classList.remove('hide')
+    timerEl.classList.add('hide')
   }
 }
 
@@ -124,9 +125,9 @@ var questions = [
   {
     question: 'What does JS stand for?',
     answers: [
-      { text: 'Java Script', correct: false},
+      { text: 'Java Scripting', correct: false},
       { text: 'Java Scripts', correct: false },
-      { text: 'Java-Script', correct: true },
+      { text: 'Java Script', correct: true },
       { text: 'I give up', correct: false}
     ]
   },
@@ -140,16 +141,16 @@ var questions = [
     ]
   },
   {
-    question: 'Who are you?',
+    question: 'What are JavaScript Data Types?',
     answers: [
-        { text: "Vengance ", correct: true },
+        { text: "Boolean, Numbers, string ", correct: true },
         { text: "My name is Maximus..", correct: false },
         { text: "I don't know ", correct: false },
         { text: "I don't know ", correct: false },
     ]
   },
   {
-    question: 'What does CSS stand for?',
+    question: 'What would following code return?  console.log(typeof typeof 1);',
     answers: [
         { text: "Cascading Style Sheet ", correct: true },
         { text: "Cascade Detergent", correct: false },
@@ -157,8 +158,9 @@ var questions = [
         { text: "Cascading sheets of style ", correct: false },
     ]
   }
+
 ]
-function faliure(timer){
+function faliure(){
 skipThisQuizButton.innerHTML = "Mama raised a little..."
 startButton.classList.add('hide')
 questionContainerElement.innerHTML = 'Faliure'
@@ -173,3 +175,10 @@ if(element.classList = ("wrong")){seconds-5} ;}
 function points(){
   
 }
+function saveuser(){
+  localStorage.setItem ('value', input.value)
+  usernamesave.innerHTML = localStorage.getItem("value")
+  username.innerHTML = usernamesave.value
+}
+var usernamesave = document.getElementById('saveusername')
+var username = document.getElementsByid("username")
