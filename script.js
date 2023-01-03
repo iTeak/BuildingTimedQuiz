@@ -104,7 +104,7 @@ function selectAnswer(e) {
 
 function setStatusClass(element, correct) {
   clearStatusClass(element)
-  if (correct) {
+  if (!correct) {
     element.classList.add('correct')
   } 
    else {
@@ -125,10 +125,10 @@ var questions = [
   {
     question: 'What does JS stand for?',
     answers: [
-      { text: 'Java Scripting', correct: false},
-      { text: 'Java Scripts', correct: false },
+      { text: 'Java Scripting', },
+      { text: 'Java Scripts',},
       { text: 'Java Script', correct: true },
-      { text: 'I give up', correct: false}
+      { text: 'I give up',}
     ]
   },
   {
@@ -150,9 +150,9 @@ var questions = [
     ]
   },
   {
-    question: 'What would following code return?  console.log(typeof typeof 1);',
+    question: 'What would following code return?  console.log("return");',
     answers: [
-        { text: "Cascading Style Sheet ", correct: true },
+        { text: "Return ", correct: true },
         { text: "Cascade Detergent", correct: false },
         { text: "I don't know ", correct: false },
         { text: "Cascading sheets of style ", correct: false },
