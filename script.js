@@ -21,7 +21,6 @@ nextButton.addEventListener('click', () => {
   currentQuestionIndex++
   setNextQuestion()
 })
-// if {answers.correct== false)then.{startcount -  }
 function startGame() { 
   countdown()
   startButton.classList.add('hide')
@@ -87,7 +86,7 @@ function selectAnswer(e) {
   Array.from(answerButtonsElement.children).forEach(button => {
     setStatusClass(button, button.dataset.correct)
   })}
-  if (correct = true){points()
+  if (correct === true){points()
   console.log(point)
   }
   if (shuffledQuestions.length > currentQuestionIndex + 1) {
@@ -102,14 +101,15 @@ function selectAnswer(e) {
   }
 }
 
-function setStatusClass(element, correct) {
+function setStatusClass(element, correct) { 
   clearStatusClass(element)
-  if (!correct) {
+  if (correct) {
     element.classList.add('correct')
   } 
    else {
     element.classList.add('wrong') 
   }
+ 
 }
 // function wrong(element, incorrect){
 // subtractTime()
@@ -173,12 +173,11 @@ function subtractTime(element){
 if(element.classList = ("wrong")){seconds-5} ;}
 
 function points(){
-  
 }
+
 function saveuser(){
   localStorage.setItem ('value', input.value)
   usernamesave.innerHTML = localStorage.getItem("value")
   username.innerHTML = usernamesave.value
 }
 var usernamesave = document.getElementById('saveusername')
-var username = document.getElementsByid("username")
